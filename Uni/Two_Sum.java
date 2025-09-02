@@ -5,7 +5,8 @@ import java.util.Scanner;
 
 public class Two_Sum {
     public static int[] twoSum(int[] nums, int target) {
-        Map<Integer, Integer> h = new HashMap<>(); // using hashmap is the best approach having least time complexity
+        Map<Integer, Integer> h = new HashMap<>(); // using hashmap is the best approach having least time complexity =
+                                                   // O(n)
         for (int i = 0; i < nums.length; i++) {
             int x = target - nums[i];
 
@@ -25,8 +26,8 @@ public class Two_Sum {
     }
 }
 
-// // two pointer approach slower than hashmap but faster than
-// brute-force(nested loops)
+// two pointer approach O(nlogn - n for loop + nlogn for sorting) slower
+// thanhashmap but faster thanbrute-force(nested loops O(n^2))
 
 // public class Two_Sum {
 // public static void main(String[] args) {
