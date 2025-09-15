@@ -25,5 +25,6 @@ class CharacterHashing {
             System.out.println(hash[c-'a']);
             q--;
         }
+        sc.close();
     }
 }
