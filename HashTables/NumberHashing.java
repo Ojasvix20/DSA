@@ -32,5 +32,7 @@ class NumberHashing {
             q--;
         }
 
+        sc.close();
+
     }
 }
