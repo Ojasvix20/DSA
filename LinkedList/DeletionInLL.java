@@ -1,4 +1,3 @@
-
 public class DeletionInLL {
 
     static class Node {
@@ -12,7 +11,7 @@ public class DeletionInLL {
         }
     }
 
-    static Node arrayToLL(int[] arr) {      //convert array to 1D Linked List
+    static Node arrayToLL(int[] arr) { // convert array to 1D Linked List
         Node head = new Node(arr[0]);
         Node curr = head;
         int j = 1;
@@ -41,7 +40,8 @@ public class DeletionInLL {
         if (head == null) {
             return head;
         }
-        head = head.next; //java has garbage collector unline C++ so we dont manually have to delete old head
+        head = head.next; // java has garbage collector unline C++ so we dont manually have to delete old
+                          // head
         return head;
     }
 
@@ -54,7 +54,7 @@ public class DeletionInLL {
             temp = temp.next;
         }
         Node tail = temp.next;
-        temp.next = null;   //delete tail in LL
+        temp.next = null; // delete tail in LL
         return tail;
 
     }
@@ -64,23 +64,37 @@ public class DeletionInLL {
             return null;
         }
         if (k == 1) {
-            head = head.next;
+            return head.next;
+        }
+        Node curr = head;
+        for (int i = 1; i < k - 1 && curr != null; i++) {
+            curr = curr.next;
         }
 
+        // If k is more than the length of the list
+        if (curr == null || curr.next == null) {
+            return head;
+        }
+        curr.next = curr.next.next;
+        return head;
+    }
+
+    static Node DeleteValue(Node head, int val) {
         return head;
     }
 
     public static void main(String[] args) {
-        int[] arr = {2, 5, 8, 7};
+        int[] arr = { 2, 5, 8, 7 };
         Node head = arrayToLL(arr);
 
-        //delete head
+        // delete head
         // System.out.println(DeleteHead(head).data);
-        //delete tail
+        // delete tail
         // System.out.println("tail removed: " + DeleteTail(head).data);
         // printLL(head);
-        //delete At Position
+
+        // delete At Position
+        DeleteAtPos(head, 3);
+        printLL(head);
     }
 }
-
-// continue from 19 mins
