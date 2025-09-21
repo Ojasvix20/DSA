@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class TopKFrequentElements {
     public static int[] topKFrequent(int[] nums, int k) {
-        int[] res = new int[k];
+        // int[] res = new int[k];
         HashMap<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
             if (map.containsKey(nums[i])) {
