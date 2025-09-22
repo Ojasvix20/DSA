@@ -83,8 +83,37 @@ public class DeletionInLL {
         return head;
     }
 
+    static Node DeleteMid(Node head) {
+        // fn to del, normal middle in case of odd and lower (mid) in case of even
+        int count = 0;
+        Node temp = head;
+        while (temp != null) {
+            count++;
+            temp = temp.next;
+        }
+
+        int mid;
+        if (count % 2 == 0) {
+            mid = count / 2; // even → floor mid (lowe middle or say if count=6 remove 3rd element)
+        } else {
+            mid = (count / 2) + 1; // odd → NORMAL middle
+        }
+
+        if (mid == 1) {
+            return head.next;
+        }
+        int i = 1;
+        Node curr = head;
+        while (i < mid - 1) {
+            curr = curr.next;
+            i++;
+        }
+        curr.next = curr.next.next;
+        return head;
+    }
+
     public static void main(String[] args) {
-        int[] arr = { 2, 5, 8, 7 };
+        int[] arr = { 2, 5, 3, 4, 8, 7 };
         Node head = arrayToLL(arr);
 
         // delete head
@@ -94,7 +123,11 @@ public class DeletionInLL {
         // printLL(head);
 
         // delete At Position
-        DeleteAtPos(head, 3);
+        // DeleteAtPos(head, 3);
+        // printLL(head);
+
+        // Delete mid:
+        DeleteMid(head);
         printLL(head);
     }
 }
