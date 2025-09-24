@@ -22,6 +22,19 @@ public class InsertionLL {
         return head;
     }
 
+    static void printLL(Node head) {
+        Node p = head;
+        while (p != null) {
+            if (p.next != null) {
+                System.out.print(p.data + "->");
+            } else {
+                System.out.print(p.data);
+            }
+            p = p.next;
+        }
+        System.out.println();
+    }
+
     static Node InsertAtHead(Node head, int val) {
         Node newNode = new Node(val);
 
@@ -47,27 +60,67 @@ public class InsertionLL {
         return head;
     }
 
-    static void printLL(Node head) {
-        Node p = head;
-        while (p != null) {
-            if (p.next != null) {
-                System.out.print(p.data + "->");
-            } else {
-                System.out.print(p.data);
-            }
-            p = p.next;
+    static Node InsertAtPos(Node head, int pos, Node newNode) {
+        if (pos <= 0) {
+            System.out.println("Invalid position");
+            return head;
         }
-        System.out.println();
+
+        // Case 1: Insert at head
+        if (pos == 1) {
+            newNode.next = head;
+            return newNode;
+        }
+        int i = 1;
+        Node temp = head;
+        while (temp != null && i < pos - 1) {
+            temp = temp.next;
+            i++;
+        }
+
+        if (temp == null) {
+            System.out.println("Position out of range");
+            return head;
+        }
+        newNode.next = temp.next;
+        temp.next = newNode;
+
+        return head;
     }
 
-    
+    static Node InsertBeforeX(Node head, int val, int x) {
+        Node newNode = new Node(val);
+        // if (x <= 0) {
+        // return head;
+        // }
+        if (head.data == x) {
+            newNode.next = head;
+            head = newNode;
+            return head;
+        }
+        Node temp = head;
+        while (temp != null && temp.next.data != x) {
+            temp = temp.next;
+        }
+        newNode.next = temp.next;
+        temp.next = newNode;
+        return head;
+    }
+
     public static void main(String[] args) {
         int[] arr = { 2, 5, 8, 7 };
         Node head = arrayToLL(arr);
 
-        head = InsertAtHead(head, 10);
+        // head = InsertAtHead(head, 10);
+        // printLL(head);
+
+        // head = InsertAtTail(head, 10);
+        // printLL(head);
+        // Node newNode = new Node(69);
+        // head = InsertAtPos(head, 3, newNode);
         printLL(head);
-        head = InsertAtTail(head, 10);
+
+        head = InsertBeforeX(head, 69, 2);
         printLL(head);
     }
 }

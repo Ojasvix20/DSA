@@ -140,7 +140,7 @@ public class DeletionInLL {
         // printLL(head);
 
         // Delete mid:
-        DeleteMid(head);
+        DeleteMid2(head);
         printLL(head);
     }
 }
