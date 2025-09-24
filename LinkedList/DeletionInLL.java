@@ -83,7 +83,7 @@ public class DeletionInLL {
         return head;
     }
 
-    static Node DeleteMid(Node head) {
+    static Node DeleteMid1(Node head) {
         // fn to del, normal middle in case of odd and lower (mid) in case of even
         int count = 0;
         Node temp = head;
@@ -94,11 +94,13 @@ public class DeletionInLL {
 
         int mid;
         if (count % 2 == 0) {
-            mid = count / 2; // even → floor mid (lowe middle or say if count=6 remove 3rd element)
+            mid = count / 2; // even -> floor mid (lowe middle or say if count=6 remove 3rd element)
         } else {
-            mid = (count / 2) + 1; // odd → NORMAL middle
+            mid = (count / 2) + 1; // odd -> NORMAL middle
         }
-
+        if (head == null || head.next == null) {
+            return null; // empty or single node
+        }
         if (mid == 1) {
             return head.next;
         }
@@ -112,6 +114,17 @@ public class DeletionInLL {
         return head;
     }
 
+
+    static Node DeleteMid2(Node head){
+        if (head == null || head.next == null) {
+            return null; // empty or single node
+        }
+
+        Node fast=head.next.next;
+        Node slow=head;
+        
+        return head;
+    }
     public static void main(String[] args) {
         int[] arr = { 2, 5, 3, 4, 8, 7 };
         Node head = arrayToLL(arr);

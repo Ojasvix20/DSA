@@ -1,11 +1,13 @@
-public class InsertionLL {
+
+public class DeleteKthFromLast {
     static class Node {
+
         int data;
         Node next;
 
         Node(int data) {
-            this.next = null;
             this.data = data;
+            this.next = null;
         }
     }
 
@@ -22,31 +24,6 @@ public class InsertionLL {
         return head;
     }
 
-    static Node InsertAtHead(Node head, int val) {
-        Node newNode = new Node(val);
-
-        newNode.next = head;
-        head = newNode;
-        return head;
-    }
-
-    static Node InsertAtTail(Node head, int val) {
-        Node newNode = new Node(val);
-        if (head == null) {
-            head = newNode;
-        }
-        if (head.next == null) {
-            head.next = newNode;
-        } else {
-            Node curr = head;
-            while (curr.next != null) {
-                curr = curr.next;
-            }
-            curr.next = newNode;
-        }
-        return head;
-    }
-
     static void printLL(Node head) {
         Node p = head;
         while (p != null) {
@@ -57,17 +34,37 @@ public class InsertionLL {
             }
             p = p.next;
         }
-        System.out.println();
     }
 
-    
-    public static void main(String[] args) {
-        int[] arr = { 2, 5, 8, 7 };
-        Node head = arrayToLL(arr);
+    static Node DeleteKthLast(Node head, int k) {
 
-        head = InsertAtHead(head, 10);
-        printLL(head);
-        head = InsertAtTail(head, 10);
+        Node dummy = new Node(0); // dummy node before the head
+        dummy.next = head;
+        Node fast = dummy, slow = dummy;
+
+        // Move fast k+1 steps so slow lands before the node to delete
+        for (int i = 0; i <= k; i++) {
+            if (fast == null)
+                return head; // k > length case -- edge case
+            fast = fast.next;
+        }
+
+        // Move both until fast reaches the end
+        while (fast != null) {
+            fast = fast.next;
+            slow = slow.next;
+        }
+
+        // Remove slow.next
+        slow.next = slow.next.next;
+
+        return dummy.next; // return new head (handles if head was removed)
+    }
+
+    public static void main(String[] args) {
+        int[] arr = { 1, 2, 3, 4, 5, 6, 7, 8 };
+        Node head = arrayToLL(arr);
+        DeleteKthLast(head, 3);
         printLL(head);
     }
 }
