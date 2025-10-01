@@ -1,7 +1,12 @@
-import java.util.Stack;;
+
+import java.util.Stack;
+
+;
 
 public class ReverseDLL {
+
     static class Node {
+
         int data;
         Node next, prev;
 
@@ -40,8 +45,9 @@ public class ReverseDLL {
     static Node ReverseUsingStack(Node head) {
         // doing reversal using stack isnt efficient : TC: O(2n) ~ O(n) & SC: O(n).
         // same can be done via 2 pointers with same TC but constant SC: O(1)
-        if (head == null)
+        if (head == null) {
             return null;
+        }
         Stack<Integer> s = new Stack<>();
         Node temp = head;
 
@@ -75,14 +81,17 @@ public class ReverseDLL {
         return last.prev;
     }
 
+    static Node ReverseRecurion(Node head) {
+        return head;
+    }
+
     public static void main(String[] args) {
-        int[] arr = { 1, 2, 3, 4, 5, 6, 7, 8 };
+        int[] arr = {1, 2, 3, 4, 5, 6, 7, 8};
         Node head = ArrayToDLL(arr);
         PrintDLL(head);
 
         // head = ReverseUsingStack(head);
         // PrintDLL(head);
-
         head = ReverseUsing2Pointers(head);
         PrintDLL(head);
     }
