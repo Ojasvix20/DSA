@@ -106,6 +106,23 @@ public class OddEven {
         return head;
     }
 
+    static Node OddEven2Pointers(Node head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        Node odd = head, even = head.next, evenHead = even;
+        while (even != null && even.next != null) {
+            odd.next = odd.next.next;
+            even.next = even.next.next;
+
+            odd = odd.next;
+            even = even.next;
+        }
+        odd.next = evenHead;
+
+        return head;
+    }
+
     public static void main(String[] args) {
         int[] arr = {1, 2, 3, 4, 5, 6, 7, 8};
         Node head = arrayToLL(arr);
