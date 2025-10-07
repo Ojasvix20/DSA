@@ -1,0 +1,29 @@
+import java.util.Stack;
+
+public class LargestAreaRectangeInHistogram {
+    static int largestRectangleArea(int[] heights) {
+        Stack<Integer> stack = new Stack<>();
+        int maxArea = 0;
+        int n = heights.length;
+        for (int i = 0; i <= n; i++) {
+            int currHeight = (i == n) ? 0 : heights[i];
+
+            while (!stack.isEmpty() && currHeight < heights[stack.peek()]) {
+                int height = heights[stack.pop()];
+                int width = stack.isEmpty() ? i : i - stack.peek() - 1;
+                maxArea = Math.max(maxArea, height * width);
+            }
+
+            stack.push(i);
+        }
+
+        return maxArea;
+
+    }
+
+    public static void main(String[] args) {
+        int[] arr = { 1, 2, 5, 9, 7, 8, 3 };
+        int areaMax = largestRectangleArea(arr);
+        System.out.println(areaMax);
+    }
+}
