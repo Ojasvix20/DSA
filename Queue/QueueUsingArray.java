@@ -35,12 +35,13 @@ public class QueueUsingArray {
         }
 
         int toPop = arr[front];
-        front++;
+        front = (front + 1) % size;
+
         currSize--;
         System.out.println(toPop + " removed from queue");
 
         // Reset if queue becomes empty
-        if (front > rear) {
+        if (currSize == 0) {
             front = rear = -1;
         }
     }
@@ -82,5 +83,26 @@ public class QueueUsingArray {
         q.display();
         q.pop();
         q.pop();
+        q.push(1);
+        q.push(2);
+        q.push(3);
+        q.push(4);
+        q.push(5);
+        q.push(6);
+        q.push(7);
+        q.push(8);
+        q.push(9);
+        q.push(10);
+
+        q.display();
+
+        q.pop();
+        q.pop();
+        q.display();
+        q.push(11);
+        q.display();
+        q.push(12);
+        q.display();
+        q.push(13);
     }
 }
