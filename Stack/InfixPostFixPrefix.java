@@ -1,7 +1,7 @@
 
 import java.util.Stack;
 
-public class InfixPostFixPrefix {
+public class InfixPostfixPrefix {
 
     // Function to return precedence of operators
     int priority(char ch) {
@@ -54,9 +54,16 @@ public class InfixPostFixPrefix {
         }
 
         return ans.toString();
+
+        // TC: O(2n)
+        // SC: O(2n)
     }
 
     String infixToPrefix(String s) {
+        // 1. Reverse the infix
+        // 2. infix to Prefix
+        // 3. Return the answer
+        // (A+B)*C-D+F -> F+D-C*)B+A( -> F+D-C*(B+A)
 
     }
 
@@ -66,7 +73,7 @@ public class InfixPostFixPrefix {
 
     // Test the conversion
     public static void main(String[] args) {
-        InfixPostFixPrefix converter = new InfixPostFixPrefix();
+        InfixPostfixPrefix converter = new InfixPostfixPrefix();
         String infix = "A+(B*C-(D/E^F)*G)*H";
         System.out.println("Postfix: " + converter.infixToPostfix(infix));
     }
