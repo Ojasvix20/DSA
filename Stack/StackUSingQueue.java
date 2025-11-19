@@ -1,7 +1,9 @@
+
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class StackUSingQueue {
+public class StackUsingQueue {
+
     Queue<Integer> q = new LinkedList<>();
     int s = 0;
 
@@ -11,16 +13,16 @@ public class StackUSingQueue {
 
     void push(int x) {
         s = q.size();
-        q.push(x);
+        q.add(x);
         for (int i = 0; i < s; i++) {
-            q.push(q.top());
-            q.pop();
+            q.add(q.peek());
+            q.remove();
         }
     }
 
     void pop() {
         if (!q.isEmpty()) {
-            q.pop();
+            q.remove();
         }
     }
 
