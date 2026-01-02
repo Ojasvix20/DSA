@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class LPS {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s= sc.next();
+        if (s.length() <= 1) {
+            return;
+        }
+
+        int maxLen = 1;
+        int start = 0;
+        int end = 0;
+        boolean[][] dp = new boolean[s.length()][s.length()];
+
+        for (int i = 0; i < s.length(); ++i) {
+            dp[i][i] = true;
+            for (int j = 0; j < i; ++j) {
+                if (s.charAt(j) == s.charAt(i) && (i - j <= 2 || dp[j + 1][i - 1])) {
+                    dp[j][i] = true;
+                    if (i - j + 1 > maxLen) {
+                        maxLen = i - j + 1;
+                        start = j;
+                        end = i;
+                    }
+                }
+            }
+        }
+
+        System.out.println(s.substring(start, end + 1));
+    }
+}
