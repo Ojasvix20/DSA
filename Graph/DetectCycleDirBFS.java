@@ -22,7 +22,6 @@ public class DetectCycleDirBFS{
             System.out.println("NO");
 
         }
-
     }
 
     public static boolean isCyclic(int V, List<List<Integer>> adj) {
@@ -63,11 +62,5 @@ public class DetectCycleDirBFS{
         // if not all nodes processed => cycle
         return count != V;
     }
-
-        
-
-
-
-    
 }
 
