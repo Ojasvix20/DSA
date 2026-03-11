@@ -64,7 +64,7 @@ class RoadReparation {
             parent[v] = u;
             size[u]+= size[v];
         } else {
-            parent[u] = v;
+            parent[u] = v; 
             size[v]+= size[u];
         }
     }
